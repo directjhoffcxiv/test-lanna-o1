@@ -10,6 +10,20 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+import pyodbc
+
+server = 'digitaleco.database.windows.net'
+database ='Digital_ECO'
+username = 'anuwatk'
+password = 'L@nnacom@1'
+driver = '{SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("SELECT [ID],[username],[contact] FROM [dbo].[Alluser]")
+row = cursor.fetchone()
+#while row:
+  #  print (str(row[0]) + " " + str(row[1]))
+  #  row = cursor.fetchone()
 
 app = Flask(__name__)
 
@@ -35,7 +49,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    text = event.message.text + 'test' #message from user
+    text = event.message.text + str(row[0]) + " " + str(row[1])  #message from user
 
     line_bot_api.reply_message(
         event.reply_token,
