@@ -1,5 +1,10 @@
 virtualenv
+venv
+*.pyc
+staticfiles
+.env
 gunicorn
 Flask
 line-bot-sdk
 requests
+pyodbc
