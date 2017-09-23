@@ -1,5 +1,5 @@
 # encoding: utf-8
-from  import Flask, request, abort
+from flask import Flask, request, abort
 
 from linebot import (
     LineBotApi, WebhookHandler
