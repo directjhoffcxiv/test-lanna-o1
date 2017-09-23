@@ -1,1 +1,1 @@
-web: python app.py
+web: gunicorn test-lanna-02.wsgi --log-file -
