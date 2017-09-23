@@ -2,5 +2,4 @@ virtualenv
 gunicorn
 Flask
 line-bot-sdk
-pyodbc
 requests
